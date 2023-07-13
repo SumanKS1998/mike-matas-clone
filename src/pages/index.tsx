@@ -1,16 +1,16 @@
 import React, { useContext, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Slider from "../components/Slider";
+import { motion } from "framer-motion";
 import { AppContext } from "../context/appContext";
 
 const Home: React.FC = () => {
-  const { setScrollValue, scrollValue: scrollValueState } =
+  const { scrollXValue,setScrollValue, scrollValue: scrollValueState } =
     useContext(AppContext);
-
+ 
   const handleScroll = ({ navigateClicked }: { navigateClicked: boolean }) => {
     const scrollValue = window.scrollY;
     if (navigateClicked) {
-      console.log("Scroll value:", scrollValue);
       setScrollValue(scrollValue);
     }
   };
@@ -34,12 +34,12 @@ const Home: React.FC = () => {
   }, [scrollValueState]);
   return (
     <>
-      <div className="w-[100%] h-[800vh] relative no-scrollbar">
+      <motion.div className="w-[100%] h-[800vh] relative no-scrollbar" style={{x:scrollXValue}}>
         <div className={styles.container}>
           <Navbar />
           <Slider handleScroll={handleScroll} />
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

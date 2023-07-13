@@ -1,17 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { motion } from "framer-motion";
 import { AppContext } from "../../context/appContext";
 import { projects } from "../../constants";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const ProjectDetails: React.FC = () => {
-  const {scrollValue}=useContext(AppContext)
+  const { scrollValue } = useContext(AppContext);
   const navigate = useNavigate();
   const { layoutId, setLayoutId } = useContext(AppContext);
   const location = useLocation();
   const selectedProject = projects.find((project) =>
     location.pathname.includes(project.name)
   );
+  useEffect(() => {
+    window.scrollTo(0, scrollValue);
+  }, []);
   const renderArrowBack = () => {
     return (
       <motion.div
@@ -36,16 +39,8 @@ const ProjectDetails: React.FC = () => {
       </motion.div>
     );
   };
-  console.log('scrollValue', scrollValue)
-  return (
-    <motion.div
-      className="flex items-center justify-center fixed top-0 right-0 left-0 bottom-0 z-[99] gap-[2%]"
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.15 } }}
-      transition={{ duration: 0.2, delay: 0.15 }}
-    >
-      {renderArrowBack()}
+  const renderDescription = () => {
+    return (
       <motion.div
         className="flex flex-col max-w-[250px]"
         initial={{ opacity: 0 }}
@@ -59,17 +54,32 @@ const ProjectDetails: React.FC = () => {
           {selectedProject?.description}
         </p>
       </motion.div>
-      <motion.img
-        layoutId={layoutId}
-        src={selectedProject?.image}
-        alt="laptop"
-        className="h-[80vh] max-w-[60%] object-contain"
-        onClick={() => {
-          setLayoutId("");
-          navigate("/");
-        }}
-      />
-    </motion.div>
+    );
+  };
+  return (
+    <div className="h-[900vh]">
+      <motion.div
+        className="flex items-center justify-center fixed top-0 right-0 left-0 bottom-0 z-[99] gap-[2%] "
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0, transition: { duration: 0.15 } }}
+        transition={{ duration: 0.2, delay: 0.15 }}
+      >
+        {renderArrowBack()}
+        {renderDescription()}
+
+        <motion.img
+          layoutId={layoutId}
+          src={selectedProject?.image}
+          alt="laptop"
+          className="h-[80vh] max-w-[60%] object-contain"
+          onClick={() => {
+            setLayoutId("");
+            navigate("/");
+          }}
+        />
+      </motion.div>
+    </div>
   );
 };
 

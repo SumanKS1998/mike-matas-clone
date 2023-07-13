@@ -1,9 +1,8 @@
-import React, { useRef, useContext } from "react";
+import React, { useRef, useContext, useEffect } from "react";
 import { projects } from "../../constants";
 import {
   motion,
   useScroll,
-  useSpring,
   useTransform,
   ScrollMotionValues,
 } from "framer-motion";
@@ -14,19 +13,17 @@ interface SliderProps {
 }
 const Slider: React.FC<SliderProps> = ({ handleScroll }) => {
   const navigate = useNavigate();
-  const { setLayoutId } = useContext(AppContext);
+  const { setLayoutId, setScrollXValue } = useContext(AppContext);
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll() as ScrollMotionValues;
-  const xSpring = useSpring(scrollYProgress, { stiffness: 200, damping: 25 });
-  const x = useTransform(xSpring, [0, 1], ["0%", "-85%"]);
-
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
   return (
     <div ref={ref}>
       <motion.div
         style={{ x }}
         className="flex flex-1 w-max"
         initial={{ gap: "50px" }}
-        animate={{ gap: "0px", transition: { delay: 0.5 } }}
+        animate={{ gap: "0px", transition: { delay: 0.2 } }}
       >
         {projects.map((item, i) => (
           <motion.div
@@ -36,6 +33,7 @@ const Slider: React.FC<SliderProps> = ({ handleScroll }) => {
               handleScroll({ navigateClicked: true });
               setLayoutId(item.name);
               navigate(`/${item.name}`);
+              setScrollXValue(x.current);
             }}
           >
             <img
