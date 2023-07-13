@@ -37,6 +37,7 @@ const ProjectDetails: React.FC = () => {
     );
   };
   return (
+    
     <motion.div
       className="flex items-center justify-center fixed top-0 right-0 left-0 bottom-0 z-[99] gap-[2%]"
       initial={{ opacity: 1 }}
@@ -49,6 +50,7 @@ const ProjectDetails: React.FC = () => {
         className="flex flex-col max-w-[250px]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { delay: 0.2 } }}
+        exit={{ opacity: 0 }}
       >
         <h1 className="text-[22px] font-bold">{selectedProject?.name}</h1>
         <h2 className="text-[20px] font-light">{selectedProject?.subtopic}</h2>
