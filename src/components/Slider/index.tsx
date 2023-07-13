@@ -25,7 +25,7 @@ const Slider: React.FC<SliderProps> = ({ handleScroll }) => {
         initial={{ gap: "50px" }}
         animate={{ gap: "0px", transition: { delay: 0.2 } }}
       >
-        {projects.map((item, i) => (
+        {projects.map((item) => (
           <motion.div
             layoutId={item.name}
             key={item.name}

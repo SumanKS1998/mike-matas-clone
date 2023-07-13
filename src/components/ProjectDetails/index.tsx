@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const ProjectDetails: React.FC = () => {
   const { scrollValue } = useContext(AppContext);
   const navigate = useNavigate();
-  const { layoutId, setLayoutId } = useContext(AppContext);
+  const { layoutId } = useContext(AppContext);
   const location = useLocation();
   const selectedProject = projects.find((project) =>
     location.pathname.includes(project.name)
@@ -57,7 +57,7 @@ const ProjectDetails: React.FC = () => {
     );
   };
   return (
-    <motion.div className="h-[600vh]"  >
+    <motion.div className="h-[600vh]">
       <motion.div
         className="flex items-center justify-center fixed top-0 right-0 left-0 bottom-0 z-[99] gap-[2%] "
         initial={{ opacity: 1 }}
