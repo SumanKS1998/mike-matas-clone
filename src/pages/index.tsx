@@ -7,7 +7,7 @@ const Home: React.FC = () => {
   const { setScrollValue, scrollValue: scrollValueState } =
     useContext(AppContext);
 
-  const handleScroll: { navigateClicked: boolean } = ({ navigateClicked }) => {
+  const handleScroll = (navigateClicked: any) => {
     const scrollValue = window.scrollY;
     if (navigateClicked) {
       setScrollValue(scrollValue);
