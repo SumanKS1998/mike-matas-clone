@@ -36,7 +36,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     scrollXValue,
     setScrollXValue,
   };
-
+console.log('layoutId', layoutId)
   return (
     <AppContext.Provider value={appContextValue}>
       {children}

@@ -57,7 +57,7 @@ const ProjectDetails: React.FC = () => {
     );
   };
   return (
-    <div className="h-[900vh]">
+    <motion.div className="h-[600vh]"  >
       <motion.div
         className="flex items-center justify-center fixed top-0 right-0 left-0 bottom-0 z-[99] gap-[2%] "
         initial={{ opacity: 1 }}
@@ -74,12 +74,11 @@ const ProjectDetails: React.FC = () => {
           alt="laptop"
           className="h-[80vh] max-w-[60%] object-contain"
           onClick={() => {
-            setLayoutId("");
             navigate("/");
           }}
         />
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

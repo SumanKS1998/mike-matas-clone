@@ -5,9 +5,12 @@ import { motion } from "framer-motion";
 import { AppContext } from "../context/appContext";
 
 const Home: React.FC = () => {
-  const { scrollXValue,setScrollValue, scrollValue: scrollValueState } =
-    useContext(AppContext);
- 
+  const {
+    scrollXValue,
+    setScrollValue,
+    scrollValue: scrollValueState,
+  } = useContext(AppContext);
+
   const handleScroll = ({ navigateClicked }: { navigateClicked: boolean }) => {
     const scrollValue = window.scrollY;
     if (navigateClicked) {
@@ -34,10 +37,12 @@ const Home: React.FC = () => {
   }, [scrollValueState]);
   return (
     <>
-      <motion.div className="w-[100%] h-[800vh] relative no-scrollbar" style={{x:scrollXValue}}>
+      <motion.div className="w-[100%] h-[700vh] relative no-scrollbar">
         <div className={styles.container}>
           <Navbar />
-          <Slider handleScroll={handleScroll} />
+          <motion.div style={{ x: scrollXValue }}>
+            <Slider handleScroll={handleScroll} />
+          </motion.div>
         </div>
       </motion.div>
     </>

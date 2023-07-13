@@ -28,7 +28,7 @@ const Slider: React.FC<SliderProps> = ({ handleScroll }) => {
         {projects.map((item, i) => (
           <motion.div
             layoutId={item.name}
-            key={i}
+            key={item.name}
             onClick={() => {
               handleScroll({ navigateClicked: true });
               setLayoutId(item.name);
