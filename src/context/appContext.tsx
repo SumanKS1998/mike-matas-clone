@@ -1,17 +1,17 @@
 import React, { createContext, useState } from "react";
 
 interface AppContextProps {
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   layoutId: string;
   setLayoutId: React.Dispatch<React.SetStateAction<string>>;
+  scrollValue: number;
+  setScrollValue: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const initialAppContext: AppContextProps = {
-  open: false,
-  setOpen: () => {},
   layoutId: "",
+  scrollValue: 0,
   setLayoutId: () => {},
+  setScrollValue: () => {},
 };
 
 export const AppContext = createContext<AppContextProps>(initialAppContext);
@@ -20,14 +20,14 @@ interface AppProviderProps {
 }
 
 const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
-  const [open, setOpen] = useState<boolean>(false);
+  const [scrollValue, setScrollValue] = useState<number>(0);
   const [layoutId, setLayoutId] = useState<string>("");
 
   const appContextValue: AppContextProps = {
-    open,
-    setOpen,
     layoutId,
     setLayoutId,
+    scrollValue,
+    setScrollValue,
   };
 
   return (

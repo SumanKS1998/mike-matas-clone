@@ -50,10 +50,10 @@ const ProjectDetails: React.FC = () => {
         animate={{ opacity: 1, transition: { delay: 0.2 } }}
         exit={{ opacity: 0 }}
       >
-        <h1 className="text-[22px] font-bold">{selectedProject?.name}</h1>
-        <h2 className="text-[20px] font-light">{selectedProject?.subtopic}</h2>
-        <h3 className="text-[20px] font-light">{selectedProject?.year}</h3>
-        <p className="text-[18px] mt-[32px] font-light">
+        <h1 className="text-[20px] font-bold">{selectedProject?.name}</h1>
+        <h2 className="text-[18px] font-light">{selectedProject?.subtopic}</h2>
+        <h3 className="text-[18px] font-light">{selectedProject?.year}</h3>
+        <p className="text-[16px] mt-[32px] font-light">
           {selectedProject?.description}
         </p>
       </motion.div>
