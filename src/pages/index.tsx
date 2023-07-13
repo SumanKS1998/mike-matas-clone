@@ -7,24 +7,29 @@ const Home: React.FC = () => {
   const { setScrollValue, scrollValue: scrollValueState } =
     useContext(AppContext);
 
-  const handleScroll = (navigateClicked: any) => {
+  const handleScroll = ({ navigateClicked }: { navigateClicked: boolean }) => {
     const scrollValue = window.scrollY;
     if (navigateClicked) {
+      console.log("Scroll value:", scrollValue);
       setScrollValue(scrollValue);
     }
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", () =>
+      handleScroll({ navigateClicked: false })
+    );
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", () =>
+        handleScroll({ navigateClicked: false })
+      );
     };
   }, []);
   useEffect(() => {
     window.scrollTo({
       top: scrollValueState,
-      behavior: "instant",
+      behavior: "auto",
     });
   }, [scrollValueState]);
   return (

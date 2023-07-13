@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from "react";
+import React, { useRef, useContext, useEffect } from "react";
 import { projects } from "../../constants";
 import {
   motion,
@@ -10,14 +10,14 @@ import {
 import { AppContext } from "../../context/appContext";
 import { useNavigate } from "react-router";
 interface SliderProps {
-  handleScroll: (params: any) => void;
+  handleScroll: (params: { navigateClicked: boolean }) => void;
 }
 const Slider: React.FC<SliderProps> = ({ handleScroll }) => {
   const navigate = useNavigate();
   const { setLayoutId } = useContext(AppContext);
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll() as ScrollMotionValues;
-  const xSpring = useSpring(scrollYProgress, { stiffness: 200, damping: 30 });
+  const xSpring = useSpring(scrollYProgress, { stiffness: 200, damping: 25 });
   const x = useTransform(xSpring, [0, 1], ["0%", "-85%"]);
 
   return (
@@ -28,7 +28,7 @@ const Slider: React.FC<SliderProps> = ({ handleScroll }) => {
             layoutId={item.name}
             key={i}
             onClick={() => {
-              handleScroll(true);
+              handleScroll({ navigateClicked: true });
               setLayoutId(item.name);
               navigate(`/${item.name}`);
             }}
