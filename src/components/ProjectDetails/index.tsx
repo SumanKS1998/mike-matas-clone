@@ -5,6 +5,7 @@ import { projects } from "../../constants";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const ProjectDetails: React.FC = () => {
+  const {scrollValue}=useContext(AppContext)
   const navigate = useNavigate();
   const { layoutId, setLayoutId } = useContext(AppContext);
   const location = useLocation();
@@ -35,6 +36,7 @@ const ProjectDetails: React.FC = () => {
       </motion.div>
     );
   };
+  console.log('scrollValue', scrollValue)
   return (
     <motion.div
       className="flex items-center justify-center fixed top-0 right-0 left-0 bottom-0 z-[99] gap-[2%]"

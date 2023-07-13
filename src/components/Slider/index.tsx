@@ -22,7 +22,12 @@ const Slider: React.FC<SliderProps> = ({ handleScroll }) => {
 
   return (
     <div ref={ref}>
-      <motion.div style={{ x }} className="flex flex-1 w-max">
+      <motion.div
+        style={{ x }}
+        className="flex flex-1 w-max"
+        initial={{ gap: "50px" }}
+        animate={{ gap: "0px", transition: { delay: 0.5 } }}
+      >
         {projects.map((item, i) => (
           <motion.div
             layoutId={item.name}
