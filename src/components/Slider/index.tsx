@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useEffect } from "react";
+import React, { useRef, useContext } from "react";
 import { projects } from "../../constants";
 import {
   motion,
@@ -33,7 +33,7 @@ const Slider: React.FC<SliderProps> = ({ handleScroll }) => {
               handleScroll({ navigateClicked: true });
               setLayoutId(item.name);
               navigate(`/${item.name}`);
-              setScrollXValue(x.current);
+              setScrollXValue(x.get());
             }}
           >
             <img

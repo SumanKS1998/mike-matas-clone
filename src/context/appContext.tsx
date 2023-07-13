@@ -5,8 +5,8 @@ interface AppContextProps {
   setLayoutId: React.Dispatch<React.SetStateAction<string>>;
   scrollValue: number;
   setScrollValue: React.Dispatch<React.SetStateAction<number>>;
-  scrollXValue: number;
-  setScrollXValue: React.Dispatch<React.SetStateAction<number>>;
+  scrollXValue: string;
+  setScrollXValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const initialAppContext: AppContextProps = {
@@ -14,7 +14,7 @@ const initialAppContext: AppContextProps = {
   scrollValue: 0,
   setLayoutId: () => {},
   setScrollValue: () => {},
-  scrollXValue: 0,
+  scrollXValue: '',
   setScrollXValue: () => {},
 };
 
@@ -25,7 +25,7 @@ interface AppProviderProps {
 
 const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [scrollValue, setScrollValue] = useState<number>(0);
-  const [scrollXValue, setScrollXValue] = useState<number>(0);
+  const [scrollXValue, setScrollXValue] = useState<string>('0');
   const [layoutId, setLayoutId] = useState<string>("");
 
   const appContextValue: AppContextProps = {
