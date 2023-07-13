@@ -16,7 +16,7 @@ const initialAppContext: AppContextProps = {
 
 export const AppContext = createContext<AppContextProps>(initialAppContext);
 interface AppProviderProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 const AppProvider: React.FC<AppProviderProps> = ({ children }) => {

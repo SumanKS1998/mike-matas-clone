@@ -1,12 +1,11 @@
-import React, { useState } from "react";
- import Navbar from "../components/Navbar";
+import React from "react";
+import Navbar from "../components/Navbar";
 import Slider from "../components/Slider";
- 
+
 const Home: React.FC = () => {
   return (
     <>
       <div className="w-[100%] h-[800vh] relative no-scrollbar">
-     
         <div className={styles.container}>
           <Navbar />
           <Slider />

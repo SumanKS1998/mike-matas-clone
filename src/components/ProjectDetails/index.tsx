@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import Images from "../../assets";
+import { motion } from "framer-motion";
 import { AppContext } from "../../context/appContext";
 import { projects } from "../../constants";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ProjectDetails: React.FC = () => {
   const navigate = useNavigate();
@@ -37,7 +36,6 @@ const ProjectDetails: React.FC = () => {
     );
   };
   return (
-    
     <motion.div
       className="flex items-center justify-center fixed top-0 right-0 left-0 bottom-0 z-[99] gap-[2%]"
       initial={{ opacity: 1 }}
