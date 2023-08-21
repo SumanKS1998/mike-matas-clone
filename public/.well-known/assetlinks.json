@@ -1,0 +1,12 @@
+[
+    {
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.openlinks.olg",
+        "sha256_cert_fingerprints": [
+          "39:A7:65:43:8E:BF:55:9E:BF:97:2D:BB:E6:0B:2B:36:9B:79:93:FA:F9:F3:FC:2D:A3:99:BF:E4:7F:A1:AA:0B"
+        ]
+      }
+    }
+  ]
